@@ -19,3 +19,10 @@ cd whatsapp-automation
 cd app
 python app.py
 ```
+
+# mvp
+
+- [ ] send messages
+    - [ ] send encrypted messages
+    - [ ] send random messages
+- [ ] embedded spammer

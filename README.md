@@ -7,3 +7,8 @@
     - [x] time
     - [x] random
     - [x] sys
+    
+# why?
+I created this project to improve myself and study a little more in the subjects of python and task automation
+
+# using

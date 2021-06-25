@@ -4,5 +4,3 @@ from random import choice
 import sys
 import pyautogui
 
-print('Hello world!')
-sleep(50)

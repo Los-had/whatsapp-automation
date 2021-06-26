@@ -33,8 +33,13 @@ if escolha_inicial == "5":
     print('Bye Bye :D')
     sleep(5)
     sys.exit()
-elif escolha_inicial == '4':
+elif escolha_inicial == "4":
     cipher_text = input("Your message here\n >  ")
     cesar(cipher_text)
+elif escolha_inicial == "1":
+    
+    send_msg()
 else:
     print(f'{escolha_inicial} is invalid')
+print("Fim")
+sys.exit()

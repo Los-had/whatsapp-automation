@@ -3,10 +3,11 @@
 # used on this project
 - [x] pyautogui
 - [x] pywhatkit
-- [x] embedded in python
-    - [x] time
-    - [x] random
-    - [x] sys
+    - [x] embedded in python
+        - [x] time
+        - [x] random
+        - [x] sys
+        - [x] webbrowser
     
 # why?
 I created this project to improve myself and study a little more in the subjects of python and task automation
@@ -22,7 +23,7 @@ python app.py
 
 # mvp
 
-- [ ] send messages
-    - [ ] send encrypted messages
+- [x] send messages
+    - [x] send encrypted messages
     - [ ] send random messages
-- [ ] embedded spammer
+- [x] embedded spammer

@@ -36,13 +36,25 @@ def spammer(text, reapeter, delay):
     while i <= j:
         sleep(1)
         print(f'Counter: {i}')
+        speak(i)
         i += 1
     for a in range(reapeter):
         pyautogui.typewrite(text)
         pyautogui.press("enter")
         pyautogui.sleep(delay)
         print(f'You sent {a} messages')
+    speak('Finished')
     print('Finish')
+def send_random_msg():
+    def random_msg():
+        msgs = ['Hi', 'Hello', 'Funny', 'Thanks', 'I love you', 'Wtf', 'Jesus christ', 'Fuck', 'Smurfs', 'Potato', 'Tomato', 'Juice', 'Orange', 'Apple', 'Microsoft', 'Linux', 'Is better', 'Shit', '...']
+        random_msg_choice = choice(msgs)
+        return random_msg_choice
+    user_phone_number = input("User phone number\n >  ")
+    msg_hour = int(input("Hour the message will be sent\n >  "))
+    msg_min = int(input("Minute the message will be sent\n >  "))
+    msg_delay = int(input("Message sent delay\n >  "))
+    send_msg(user_phone_number, random_msg(), msg_hour, msg_min, msg_delay)
 #inputs and verifications
 escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n >  ")
 
@@ -68,6 +80,8 @@ elif escolha_inicial == "1":
     msg_min = int(input("Minute the message will be sent\n >  "))
     msg_delay = int(input("Message sent delay\n >  "))
     send_msg(user_phone_number, msg_content, msg_hour, msg_min, msg_delay)
+elif escolha_inicial == "2":
+    send_random_msg()
 else:
     print(f'{escolha_inicial} is invalid')
 print("End of the script")

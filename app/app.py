@@ -61,6 +61,13 @@ elif escolha_inicial == "3":
     spam_content = input("Message do you want to spam\n >  ")
     spam_reapeter = int(input("How many times do you want to sent\n >  "))
     spammer(spam_content, spam_reapeter, spam_delay)
+elif escolha_inicial == "1":
+    user_phone_number = input("User phone number\n >  ")
+    msg_content = input("Your message here\n >  ")
+    msg_hour = int(input("Hour the message will be sent\n >  "))
+    msg_min = int(input("Minute the message will be sent\n >  "))
+    msg_delay = int(input("Message sent delay\n >  "))
+    send_msg(user_phone_number, msg_content, msg_hour, msg_min, msg_delay)
 else:
     print(f'{escolha_inicial} is invalid')
 print("End of the script")

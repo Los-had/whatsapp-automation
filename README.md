@@ -3,7 +3,7 @@
 # used on this project
 - [x] pyautogui
 - [x] pywhatkit
-    - [x] embedded in python
+    * embedded in python
         - [x] time
         - [x] random
         - [x] sys

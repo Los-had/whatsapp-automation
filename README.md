@@ -35,7 +35,7 @@ python app.py
 <div id="spammerfeatures">
     <h3>embedded spammer features</h3>
     <ul>
-        <li>embedded time counter</li>
+        <li>embedded time counter, with voice</li>
         <li>custom messages delay</li>
         <li>custom messages content</li>
         <li>uses pyautogui for more faster spam</li>
@@ -44,7 +44,7 @@ python app.py
 <div id="sem">
     <h3>encrypted message features</h3>
     <ul>
-        <li>embedded Caesar cipher encryption system</li>
+        <li>embedded Caesar cipher encryption system, with voice</li>
         <li>custom messages delay</li>
         <li>custom messages content</li>
         <li>custom cipher key</li>

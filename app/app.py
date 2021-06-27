@@ -34,7 +34,7 @@ def spammer(text, reapeter, delay):
     webbrowser.open_new_tab('web.whatsapp.com')
     print("Choose the contact do you want to spam")
     while i <= j:
-        sleep(1)
+        #sleep(1)
         print(f'Counter: {i}')
         speak(i)
         i += 1

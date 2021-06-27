@@ -113,3 +113,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 pywhatkit_dbs.txt
+.app/pywhatkit_dbs.txt
+.idea/

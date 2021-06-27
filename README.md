@@ -3,6 +3,7 @@
 # used on this project
 - [x] pyautogui
 - [x] pywhatkit
+- [x] pyttsx3
     * embedded in python
         - [x] time
         - [x] random

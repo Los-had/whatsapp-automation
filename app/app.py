@@ -1,3 +1,4 @@
+from sqlite3.dbapi2 import connect
 import pywhatkit as pwk
 from time import sleep
 from random import choice
@@ -5,8 +6,12 @@ import sys
 import pyautogui
 import pyttsx3
 import webbrowser
+import sqlite3
+from sqlite3 import Error
 #import hashlib
 
+conn = sqlite3.connect("contacts.db")
+cursor = conn.cursor()
 #functions
 tts = pyttsx3.init()
 def speak(text):

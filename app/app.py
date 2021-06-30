@@ -10,6 +10,7 @@ import sqlite3
 from sqlite3 import Error
 #import hashlib
 
+tts = pyttsx3.init()
 conn = sqlite3.connect("contacts.db")
 cursor = conn.cursor()
 cursor.execute('''
@@ -19,10 +20,14 @@ CREATE TABLE IF NOT EXISTS contacts (
 );
 ''')
 #functions
-tts = pyttsx3.init()
+def add_contact_to_db(name, contact):
+    cursor.execute(f'''
+    INSERT INTO contacts (name, phone);
+    VALUE ('{name}', '{contact}');
+    ''')
 def speak(text):
     tts.say(text)
-    tts.runAndWait() 
+    tts.runAndWait()
 def encrypt(msg):
     cipher_key = int(input("Caesar cipher key\n >  "))
     user_phone_number = input("User phone number\n >  ")

@@ -12,6 +12,12 @@ from sqlite3 import Error
 
 conn = sqlite3.connect("contacts.db")
 cursor = conn.cursor()
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS contacts (
+    name TEXT NOT NULL,
+    phone TEXT NOT NULL
+);
+''')
 #functions
 tts = pyttsx3.init()
 def speak(text):

@@ -115,3 +115,4 @@ dmypy.json
 pywhatkit_dbs.txt
 .app/pywhatkit_dbs.txt
 .idea/
+app/contacts.db

@@ -24,7 +24,7 @@ def add_contact_to_db(name, contact):
     cursor.execute(f'''
     INSERT INTO contacts (name, phone);
     VALUE ('{name}', '{contact}');
-    ''')
+    ''')    
 def speak(text):
     tts.say(text)
     tts.runAndWait()
@@ -72,7 +72,7 @@ def send_random_msg():
     msg_delay = int(input("Message sent delay\n >  "))
     send_msg(user_phone_number, random_msg(), msg_hour, msg_min, msg_delay)
 #inputs and verifications
-escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n >  ")
+escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. create contact\n7.view contacts\n >  ")
 
 if escolha_inicial == "5":
     print('Bye Bye :D')
@@ -81,8 +81,7 @@ if escolha_inicial == "5":
 elif escolha_inicial == "4":
     cipher_text = input("Your message here\n >  ")
     encrypt(cipher_text)
-elif escolha_inicial == "1":
-    
+elif escolha_inicial == "1":    
     send_msg()
 elif escolha_inicial == "3":
     spam_delay = int(input("Messages delay\n >  "))
@@ -98,6 +97,10 @@ elif escolha_inicial == "1":
     send_msg(user_phone_number, msg_content, msg_hour, msg_min, msg_delay)
 elif escolha_inicial == "2":
     send_random_msg()
+elif escolha_inicial == "6":
+    pass
+elif escolha_inicial == "7":
+    pass
 else:
     print(f'{escolha_inicial} is invalid')
 print("End of the script")

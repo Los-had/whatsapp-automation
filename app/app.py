@@ -32,7 +32,7 @@ def view_contact():
     SELECT name, phone FROM contacts;
     ''')
     for c in cursor.fetchall():
-        print(c)
+        print(f'Contact info: {c}')
     conn.close()
 def speak(text):
     tts.say(text)

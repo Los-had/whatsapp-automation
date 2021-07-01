@@ -20,16 +20,19 @@ CREATE TABLE IF NOT EXISTS contacts (
 );
 ''')
 #functions
-def view_contact():
-    for c in cursor.fetchall():
-        print(c)
-    conn.close()
 def add_contact_to_db(name, contact):
     cursor.execute(f'''
     INSERT INTO contacts (name, phone)
     VALUES ('{name}', '{contact}')
     ''')
     conn.commit()
+    conn.close()
+def view_contact():
+    cursor.execute('''
+    SELECT name, phone FROM contacts;
+    ''')
+    for c in cursor.fetchall():
+        print(c)
     conn.close()
 def speak(text):
     tts.say(text)

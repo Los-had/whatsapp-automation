@@ -20,11 +20,17 @@ CREATE TABLE IF NOT EXISTS contacts (
 );
 ''')
 #functions
+def view_contact():
+    for c in cursor.fetchall():
+        print(c)
+    conn.close()
 def add_contact_to_db(name, contact):
     cursor.execute(f'''
-    INSERT INTO contacts (name, phone);
-    VALUE ('{name}', '{contact}');
-    ''')    
+    INSERT INTO contacts (name, phone)
+    VALUES ('{name}', '{contact}')
+    ''')
+    conn.commit()
+    conn.close()
 def speak(text):
     tts.say(text)
     tts.runAndWait()
@@ -98,9 +104,11 @@ elif escolha_inicial == "1":
 elif escolha_inicial == "2":
     send_random_msg()
 elif escolha_inicial == "6":
-    pass
+    contact_name = input("Contact name\n >  ")
+    contact_phone_number = input("Contact phone number\n >  ")
+    add_contact_to_db(contact_name, contact_phone_number)
 elif escolha_inicial == "7":
-    pass
+    view_contact()
 else:
     print(f'{escolha_inicial} is invalid')
 print("End of the script")

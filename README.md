@@ -29,6 +29,12 @@ python app.py
     - [x] send random messages | [features](#srm)
 - [x] embedded spammer | [features](#spammerfeatures)
 
+## Extra features
+- [ ] Contacts sqlite db
+    - [x] view all the contacts in the list,
+    - [x] add contacts in the list,
+    - [ ] delete contacts in the list
+- [ ] send other types of media on whatsapp like videos, photos and more.
 
 # Features
 

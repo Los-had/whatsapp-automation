@@ -81,8 +81,8 @@ if escolha_inicial == "5":
 elif escolha_inicial == "4":
     cipher_text = input("Your message here\n >  ")
     encrypt(cipher_text)
-elif escolha_inicial == "1":    
-    send_msg()
+#elif escolha_inicial == "1":    
+#    send_msg()
 elif escolha_inicial == "3":
     spam_delay = int(input("Messages delay\n >  "))
     spam_content = input("Message do you want to spam\n >  ")

@@ -10,6 +10,7 @@ import sqlite3
 from sqlite3 import Error
 #import hashlib
 
+#base variables
 tts = pyttsx3.init()
 conn = sqlite3.connect("contacts.db")
 cursor = conn.cursor()

@@ -21,6 +21,9 @@ CREATE TABLE IF NOT EXISTS contacts (
 );
 ''')
 #functions
+def speak(text):
+    tts.say(text)
+    tts.runAndWait()
 def counter():
     time_to_sleep = int(input("Time to sleep\n >  "))
     r = 1
@@ -43,9 +46,6 @@ def view_contact():
     for c in cursor.fetchall():
         print(f'Contact info: {c}')
     conn.close()
-def speak(text):
-    tts.say(text)
-    tts.runAndWait()
 def encrypt(msg):
     cipher_key = int(input("Caesar cipher key\n >  "))
     user_phone_number = input("User phone number\n >  ")

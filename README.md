@@ -15,6 +15,8 @@
 I created this project to improve myself and study a little more in the subjects of python and task automation
 
 # using
+***WARNING: this program needs sqlite3 db installed to work properly.***
+
 download the dependencies running the ``denpendencies.cmd`` or ``dependencies.sh`` when the installing processes finish 
 download the project in the github after that open your terminal and write 
 ```

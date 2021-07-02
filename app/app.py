@@ -107,7 +107,7 @@ elif escolha_inicial == "3":
     spam_reapeter = int(input("How many times do you want to sent\n >  "))
     spammer(spam_content, spam_reapeter, spam_delay)
 elif escolha_inicial == "1":
-    user_phone_number = input("User phone number\n >  ")
+    user_phone_number = input("User phone number\n >  ") 
     msg_content = input("Your message here\n >  ")
     msg_hour = int(input("Hour the message will be sent\n >  "))
     msg_min = int(input("Minute the message will be sent\n >  "))

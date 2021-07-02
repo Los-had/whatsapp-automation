@@ -16,20 +16,21 @@ cursor = conn.cursor()
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS contacts (
     name TEXT NOT NULL,
-    phone TEXT NOT NULL
+    phone TEXT NOT NULL,
+    description TEXT NOT NULL
 );
 ''')
 #functions
-def add_contact_to_db(name, contact):
+def add_contact_to_db(name, contact, description):
     cursor.execute(f'''
-    INSERT INTO contacts (name, phone)
-    VALUES ('{name}', '{contact}')
+    INSERT INTO contacts (name, phone, description)
+    VALUES ('{name}', '{contact}', '{description}')
     ''')
     conn.commit()
     conn.close()
 def view_contact():
     cursor.execute('''
-    SELECT name, phone FROM contacts;
+    SELECT name, phone, description FROM contacts;
     ''')
     for c in cursor.fetchall():
         print(f'Contact info: {c}')
@@ -81,7 +82,7 @@ def send_random_msg():
     msg_delay = int(input("Message sent delay\n >  "))
     send_msg(user_phone_number, random_msg(), msg_hour, msg_min, msg_delay)
 #inputs and verifications
-escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. create contact\n7.view contacts\n >  ")
+escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. create contact\n7. view contacts\n >  ")
 
 if escolha_inicial == "5":
     print('Bye Bye :D')
@@ -109,7 +110,8 @@ elif escolha_inicial == "2":
 elif escolha_inicial == "6":
     contact_name = input("Contact name\n >  ")
     contact_phone_number = input("Contact phone number\n >  ")
-    add_contact_to_db(contact_name, contact_phone_number)
+    contact_description = input("Contact short description\n > ")
+    add_contact_to_db(contact_name, contact_phone_number, contact_description)
 elif escolha_inicial == "7":
     view_contact()
 else:

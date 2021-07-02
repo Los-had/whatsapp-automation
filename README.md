@@ -9,7 +9,7 @@
         - [x] random
         - [x] sys
         - [x] webbrowser
-        - [ ] sqlite3 and sqlite3 Error
+        - [x] sqlite3 and sqlite3 Error
     
 # why?
 I created this project to improve myself and study a little more in the subjects of python and task automation

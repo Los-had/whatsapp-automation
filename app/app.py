@@ -40,12 +40,26 @@ def add_contact_to_db(name, contact, description):
     conn.commit()
     conn.close()
 def view_contact():
-    cursor.execute('''
-    SELECT name, phone, description FROM contacts;
-    ''')
-    for c in cursor.fetchall():
-        print(f'Contact info: {c}')
-    conn.close()
+    choice_description = input("Want to see contact description?(y/n)\n >  ")
+    if choice_description == "y":
+        cursor.execute('''
+        SELECT name, phone, description FROM contacts;
+        ''')
+        for c in cursor.fetchall():
+            print(f'Contact info: {c}')
+        conn.close()
+    elif choice_description == "n":
+        cursor.execute('''
+        SELECT name, phone FROM contacts;
+        ''')
+        for c in cursor.fetchall():
+            print(f'Contact info: {c}')
+        conn.close()
+    else:
+        print(f'{choice_description} is not a valid choice')
+        conn.close()
+        sleep(10)
+        sys.exit()
 def encrypt(msg):
     cipher_key = int(input("Caesar cipher key\n >  "))
     user_phone_number = input("User phone number\n >  ")

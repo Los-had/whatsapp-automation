@@ -70,9 +70,9 @@ python app.py
 <div id="cdbf">
     <h3>Contacts.db crud</h3>
     <ul>
-        <li>Create contacts</li>
-        <li>Update contacts</li>
-        <li>Read contacts</li>
-        <li>Delete contacts</li>
+        <li><i>C</i>reate contacts</li>
+        <li><i>R</i>ead contacts</li>
+        <li><i>U</i>pdate contacts</li>
+        <li><i>D</i>elete contacts</li>
     </ul>
 </div>

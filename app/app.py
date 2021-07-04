@@ -45,14 +45,14 @@ def view_contact():
     choice_description = input("Want to see contact description?(y/n)\n >  ")
     if choice_description == "y":
         cursor.execute('''
-        SELECT id, name, phone, description FROM contacts;
+        SELECT * FROM contacts;
         ''')
         for c in cursor.fetchall():
             print(f'Contact info: {c}')
         conn.close()
     elif choice_description == "n":
         cursor.execute('''
-        SELECT name, phone FROM contacts;
+        SELECT id, name, phone FROM contacts;
         ''')
         for c in cursor.fetchall():
             print(f'Contact info: {c}')
@@ -62,6 +62,34 @@ def view_contact():
         conn.close()
         sleep(10)
         sys.exit()
+def view_contact_open():
+    choice_description = input("Want to see contact description?(y/n)\n >  ")
+    if choice_description == "y":
+        cursor.execute('''
+        SELECT * FROM contacts;
+        ''')
+        for c in cursor.fetchall():
+            print(f'Contact info: {c}')
+    elif choice_description == "n":
+        cursor.execute('''
+        SELECT id, name, phone FROM contacts;
+        ''')
+        for c in cursor.fetchall():
+            print(f'Contact info: {c}')
+    else:
+        print(f'{choice_description} is not a valid choice')
+        conn.close()
+        sleep(10)
+        sys.exit()
+def remove_contact_to_db():
+    view_contact_open()
+    remove_choice = int(input("To remove a contact in the list of contacts you have to enter the contact id\n >  "))
+    cursor.execute(f'''
+    DELETE FROM contacts
+    WHERE id = {remove_choice}
+    ''')
+    conn.commit()
+    conn.close()
 def encrypt(msg):
     cipher_key = int(input("Caesar cipher key\n >  "))
     user_phone_number = input("User phone number\n >  ")
@@ -106,7 +134,7 @@ def send_random_msg():
     msg_delay = int(input("Message sent delay\n >  "))
     send_msg(user_phone_number, random_msg(), msg_hour, msg_min, msg_delay)
 #inputs and verifications
-escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n >  ")
+escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n >  ")
 
 if escolha_inicial == "5":
     print('Bye Bye :D')
@@ -140,6 +168,9 @@ elif escolha_inicial == "7":
     view_contact()
 elif escolha_inicial == "8":
     counter()
+elif escolha_inicial == "9":
+    remove_contact_to_db()
+    print("Contact deleted")
 else:
     print(f'{escolha_inicial} is invalid')
 print("End of the script")

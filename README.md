@@ -33,10 +33,11 @@ python app.py
 - [x] embedded spammer | [features](#spammerfeatures)
 
 ## Extra features
-- [ ] Contacts sqlite db
+- [x] Contacts sqlite db
     - [x] view all the contacts in the list,
     - [x] add contacts in the list,
-    - [ ] delete contacts in the list
+    - [x] delete contacts in the list
+    - [x] update contact info
 - [ ] send other types of media on whatsapp like videos, photos and more.
 
 # Features

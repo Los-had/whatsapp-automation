@@ -90,6 +90,19 @@ def remove_contact_to_db():
     ''')
     conn.commit()
     conn.close()
+def update_contact_data():
+    view_contact_open()
+    contact_id = int(input("Enter the contact id\n >  "))
+    new_name = input("Please enter new contact name\n >  ")
+    new_phone_number = input("Please enter contact new phone number\n >  ")
+    new_description = input("Please enter new contact description\n >  ")
+    cursor.execute(f'''
+    UPDATE contacts
+    SET name = '{new_name}', phone = '{new_phone_number}', description = '{new_description}'
+    WHERE id = {contact_id}
+    ''')
+    conn.commit()
+    conn.close()
 def encrypt(msg):
     cipher_key = int(input("Caesar cipher key\n >  "))
     user_phone_number = input("User phone number\n >  ")
@@ -134,7 +147,7 @@ def send_random_msg():
     msg_delay = int(input("Message sent delay\n >  "))
     send_msg(user_phone_number, random_msg(), msg_hour, msg_min, msg_delay)
 #inputs and verifications
-escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n >  ")
+escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n >  ")
 
 if escolha_inicial == "5":
     print('Bye Bye :D')
@@ -171,6 +184,8 @@ elif escolha_inicial == "8":
 elif escolha_inicial == "9":
     remove_contact_to_db()
     print("Contact deleted")
+elif escolha_inicial == "10":
+    update_contact_data()
 else:
     print(f'{escolha_inicial} is invalid')
 print("End of the script")

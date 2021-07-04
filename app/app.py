@@ -97,7 +97,7 @@ def spammer(text, reapeter, delay):
     print('Finish')
 def send_random_msg():
     def random_msg():
-        msgs = ['Hi', 'Hello', 'Funny', 'Thanks', 'I love you', 'Wtf', 'Jesus christ', 'Fuck', 'Smurfs', 'Potato', 'Tomato', 'Juice', 'Orange', 'Apple', 'Microsoft', 'Linux', 'Is better', 'Shit', '...']
+        msgs = ['Hi', 'Hello', 'Funny', 'Thanks', 'I love you', 'Wtf', 'Jesus christ', 'Fuck', 'Smurfs', 'Potato', 'Tomato', 'Juice', 'Orange', 'Apple', 'Microsoft', 'Linux', 'Is better', 'Shit', '...', ';-;', ':D', ':p', ':3', '<3', "'-'", '=)', '=(']
         random_msg_choice = choice(msgs)
         return random_msg_choice
     user_phone_number = input("User phone number\n >  ")

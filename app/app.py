@@ -16,6 +16,7 @@ conn = sqlite3.connect("contacts.db")
 cursor = conn.cursor()
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS contacts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     phone TEXT NOT NULL,
     description TEXT NOT NULL
@@ -44,7 +45,7 @@ def view_contact():
     choice_description = input("Want to see contact description?(y/n)\n >  ")
     if choice_description == "y":
         cursor.execute('''
-        SELECT name, phone, description FROM contacts;
+        SELECT id, name, phone, description FROM contacts;
         ''')
         for c in cursor.fetchall():
             print(f'Contact info: {c}')

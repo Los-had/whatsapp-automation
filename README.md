@@ -33,7 +33,7 @@ python app.py
 - [x] embedded spammer | [features](#spammerfeatures)
 
 ## Extra features
-- [x] Contacts sqlite db
+- [x] Contacts sqlite db | [features](#cdbf)
     - [x] view all the contacts in the list,
     - [x] add contacts in the list,
     - [x] delete contacts in the list
@@ -65,5 +65,14 @@ python app.py
     <ul>
         <li>embedded random message function</li>
         <li>custom messages delay</li>
+    </ul>
+</div>
+<div id="cdbf">
+    <h3>Contacts.db crud</h3>
+    <ul>
+        <li>Create contacts</li>
+        <li>Update contacts</li>
+        <li>Read contacts</li>
+        <li>Delete contacts</li>
     </ul>
 </div>

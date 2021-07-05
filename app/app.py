@@ -147,6 +147,7 @@ def spammer(text, reapeter, delay):
         pyautogui.press("enter")
         pyautogui.sleep(delay)
         print(f'You sent {a} messages')
+    pyautogui.hotkey("ctrl", "w")
     speak('Finished')
     print('Finish')
 def send_random_msg():

@@ -103,6 +103,19 @@ def update_contact_data():
     ''')
     conn.commit()
     conn.close()
+def tts_func(content):
+    tts.save_to_file(content, 'audio.mp3')
+    tts.runAndWait()
+def save_tts_audio():
+    text = input("Text to transform in audio\n >  ")
+    ask_hear_audio = input("Do you want to hear the audio?(y/n)\n >  ")
+    if ask_hear_audio == "y":
+        speak(text)
+        tts_func(text)
+    elif ask_hear_audio == "n":
+        tts_func(text)
+    else:
+        print(f'{ask_hear_audio}: is invalid')
 def encrypt(msg):
     cipher_key = int(input("Caesar cipher key\n >  "))
     user_phone_number = input("User phone number\n >  ")
@@ -147,7 +160,7 @@ def send_random_msg():
     msg_delay = int(input("Message sent delay\n >  "))
     send_msg(user_phone_number, random_msg(), msg_hour, msg_min, msg_delay)
 #inputs and verifications
-escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n >  ")
+escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n >  ")
 
 if escolha_inicial == "5":
     print('Bye Bye :D')
@@ -186,6 +199,8 @@ elif escolha_inicial == "9":
     print("Contact deleted")
 elif escolha_inicial == "10":
     update_contact_data()
+elif escolha_inicial == "11":
+    save_tts_audio()
 else:
     print(f'{escolha_inicial} is invalid')
 print("End of the script")

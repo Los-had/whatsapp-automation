@@ -166,12 +166,12 @@ def send_msg_for_many_contacts():
     msg_min1 = int(input("Minute the message will be sent\n >  "))
     delay1 = int(input("Message sent delay\n > "))
     contact_reapeter = int(input("Number of contacts to send messages\n >  "))
-    for w in range(contact_reapeter):
+    for w in range(1):
         for s in range(contact_reapeter):
             contact_number_ask = input(f"{s} contact\n >  ")
             contact_list.append(contact_number_ask)
             print(f'{s}: {contact_list}')
-        send_msg(contact_list[s], content_of_msg, msg_hour1, msg_min1, delay1)
+            send_msg(contact_list[s], content_of_msg, msg_hour1, msg_min1, delay1)
 #inputs and verifications
 escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n >  ")
 

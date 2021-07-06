@@ -30,7 +30,7 @@ def speak(text):
     tts.runAndWait()
 def speech_recognition():
     with sr.Microphone() as mic:
-        print("Start to speak...")
+        print("Start to speak...\n")
         while True:
             audio = lis.listen(mic)
             sr_text = lis.recognize_google(audio, language="en")

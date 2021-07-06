@@ -14,16 +14,19 @@ import speech_recognition as sr
 #base variables
 lis = sr.Recognizer()
 tts = pyttsx3.init()
-conn = sqlite3.connect("contacts.db")
-cursor = conn.cursor()
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS contacts (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    phone TEXT NOT NULL,
-    description TEXT NOT NULL
-);
-''')
+try:
+    conn = sqlite3.connect("contacts.db")
+    cursor = conn.cursor()
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS contacts (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        phone TEXT NOT NULL,
+        description TEXT NOT NULL
+    );
+    ''')
+except Error:
+    print(f'An error occurred, error code: {Error.code}')
 #functions
 def speak(text):
     tts.say(text)
@@ -47,74 +50,99 @@ def counter():
         r += 1
     speak('Time finished!')
 def add_contact_to_db(name, contact, description):
-    cursor.execute(f'''
-    INSERT INTO contacts (name, phone, description)
-    VALUES ('{name}', '{contact}', '{description}')
-    ''')
-    conn.commit()
-    conn.close()
+    try:
+        cursor.execute(f'''
+        INSERT INTO contacts (name, phone, description)
+        VALUES ('{name}', '{contact}', '{description}')
+        ''')
+        conn.commit()
+        conn.close()
+    except Error:
+        print(f'An error occurred, error code: {Error.code}')
+    finally:
+        conn.close()
 def view_contact():
-    choice_description = input("Want to see contact description?(y/n)\n >  ")
-    if choice_description == "y":
-        cursor.execute('''
-        SELECT * FROM contacts;
-        ''')
-        for c in cursor.fetchall():
-            print(f'Contact info: {c}')
+    try:    
+        choice_description = input("Want to see contact description?(y/n)\n >  ")
+        if choice_description == "y":
+            cursor.execute('''
+            SELECT * FROM contacts;
+            ''')
+            for c in cursor.fetchall():
+                print(f'Contact info: {c}')
+            conn.close()
+        elif choice_description == "n":
+            cursor.execute('''
+            SELECT id, name, phone FROM contacts;
+            ''')
+            for c in cursor.fetchall():
+                print(f'Contact info: {c}')
+            conn.close()
+        else:
+            print(f'{choice_description} is not a valid choice')
+            conn.close()
+            sleep(10)
+            sys.exit()
+    except Error:
+        print(f'An error occurred, error code: {Error.code}')
+    finally:
         conn.close()
-    elif choice_description == "n":
-        cursor.execute('''
-        SELECT id, name, phone FROM contacts;
-        ''')
-        for c in cursor.fetchall():
-            print(f'Contact info: {c}')
-        conn.close()
-    else:
-        print(f'{choice_description} is not a valid choice')
-        conn.close()
-        sleep(10)
-        sys.exit()
 def view_contact_open():
-    choice_description = input("Want to see contact description?(y/n)\n >  ")
-    if choice_description == "y":
-        cursor.execute('''
-        SELECT * FROM contacts;
-        ''')
-        for c in cursor.fetchall():
-            print(f'Contact info: {c}')
-    elif choice_description == "n":
-        cursor.execute('''
-        SELECT id, name, phone FROM contacts;
-        ''')
-        for c in cursor.fetchall():
-            print(f'Contact info: {c}')
-    else:
-        print(f'{choice_description} is not a valid choice')
+    try:
+        choice_description = input("Want to see contact description?(y/n)\n >  ")
+        if choice_description == "y":
+            cursor.execute('''
+            SELECT * FROM contacts;
+            ''')
+            for c in cursor.fetchall():
+                print(f'Contact info: {c}')
+        elif choice_description == "n":
+            cursor.execute('''
+            SELECT id, name, phone FROM contacts;
+            ''')
+            for c in cursor.fetchall():
+                print(f'Contact info: {c}')
+        else:
+            print(f'{choice_description} is not a valid choice')
+            conn.close()
+            sleep(10)
+            sys.exit()
+    except Error:
+        print(f'An error occurred, error code: {Error.code}')
+    finally:
         conn.close()
-        sleep(10)
-        sys.exit()
 def remove_contact_to_db():
-    view_contact_open()
-    remove_choice = int(input("To remove a contact in the list of contacts you have to enter the contact id\n >  "))
-    cursor.execute(f'''
-    DELETE FROM contacts
-    WHERE id = {remove_choice}
-    ''')
-    conn.commit()
-    conn.close()
+    try:
+        view_contact_open()
+        remove_choice = int(input("To remove a contact in the list of contacts you have to enter the contact id\n >  "))
+        cursor.execute(f'''
+        DELETE FROM contacts
+        WHERE id = {remove_choice}
+        ''')
+        conn.commit()
+        conn.close()
+    except Error:
+        print(f'An error occurred, error code: {Error.code}')
+    finally:
+        conn.close()
 def update_contact_data():
-    view_contact_open()
-    contact_id = int(input("Enter the contact id\n >  "))
-    new_name = input("Please enter new contact name\n >  ")
-    new_phone_number = input("Please enter contact new phone number\n >  ")
-    new_description = input("Please enter new contact description\n >  ")
-    cursor.execute(f'''
-    UPDATE contacts
-    SET name = '{new_name}', phone = '{new_phone_number}', description = '{new_description}'
-    WHERE id = {contact_id}
-    ''')
-    conn.commit()
-    conn.close()
+    try:
+        view_contact_open()
+        contact_id = int(input("Enter the contact id\n >  "))
+        new_name = input("Please enter new contact name\n >  ")
+        new_phone_number = input("Please enter contact new phone number\n >  ")
+        new_description = input("Please enter new contact description\n >  ")
+        cursor.execute(f'''
+        UPDATE contacts
+        SET name = '{new_name}', phone = '{new_phone_number}', description = '{new_description}'
+        WHERE id = {contact_id}
+        ''')
+        conn.commit()
+        conn.close()
+    except Error:
+        print(f'An error occurred, error code: {Error.code}')
+    finally:
+        conn.close()
 def tts_func(content):
     tts.save_to_file(content, 'audio.mp3')
     tts.runAndWait()

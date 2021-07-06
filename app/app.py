@@ -32,15 +32,27 @@ def speak(text):
     tts.say(text)
     tts.runAndWait()
 def speech_recognition():
-    with sr.Microphone() as mic:
-        print("Start to speak...\n")
-        while True:
-            print("Press ctrl + c to stop.")
-            audio = lis.listen(mic)
-            sr_text = lis.recognize_google(audio, language="en")
-            with open('text.txt', 'a') as file:
-                file.write(f'{sr_text}\n')
-            print("Saved")
+    language_choice = input("What language you want?(pt/en)\n >  ")
+    if language_choice == "en":
+        with sr.Microphone() as mic:
+            print("Start to speak...\n")
+            while True:
+                print("Press ctrl + c to stop.")
+                audio = lis.listen(mic)
+                sr_text = lis.recognize_google(audio, language="en")
+                with open('text.txt', 'a') as file:
+                    file.write(f'{sr_text}\n')
+                print("Saved")
+    elif language_choice == "pt":
+            with sr.Microphone() as mic:
+                print("Começe a falar...\n")
+                while True:
+                    print("Pressione ctrl + c para encerrar.")
+                    audio = lis.listen(mic)
+                    sr_text = lis.recognize_google(audio, language="pt")
+                    with open('text.txt', 'a') as file:
+                        file.write(f'{sr_text}\n')
+                    print("Salvo")
 def counter():
     time_to_sleep = int(input("Time to sleep\n >  "))
     r = 1

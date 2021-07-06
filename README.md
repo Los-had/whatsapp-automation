@@ -4,6 +4,7 @@
 - [x] pyautogui
 - [x] pywhatkit
 - [x] pyttsx3
+- [x] SpeechRecognition
     * embedded in python
         - [x] time
         - [x] random

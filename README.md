@@ -1,6 +1,6 @@
 # whatsapp-automation
  Automating whatsapp with python
-# used on this project
+## used on this project
 - [x] pyautogui
 - [x] pywhatkit
 - [x] pyttsx3
@@ -12,10 +12,10 @@
         - [x] webbrowser
         - [x] sqlite3 and sqlite3 Error
     
-# why?
+## why?
 I created this project to improve myself and study a little more in the subjects of python and task automation
 
-# using
+## using
 ***WARNING: this program needs sqlite3 db installed to work properly.***
 
 ***WARNING: this program needs internet connection to work properly.***
@@ -35,22 +35,25 @@ cd ./app
 python app.py
 ```
 
-# mvp
+## mvp
 
 - [x] send messages 
     - [x] send encrypted messages  | [features](#sem)
     - [x] send random messages | [features](#srm)
 - [x] embedded spammer | [features](#spammerfeatures)
 
-## Extra features
+### Extra
 - [x] Contacts sqlite db | [features](#cdbf)
     - [x] view all the contacts in the list,
     - [x] add contacts in the list,
     - [x] delete contacts in the list
     - [x] update contact info
-- [ ] send other types of media on whatsapp like videos, photos and more.
+- [x] send other types of media on whatsapp like videos, photos and more.  | [features](#otm)
+- [x] speech recognition  | [features](#sr)
+- [x] tts  | [features](#tts)
 
-# Features
+
+## Features
 
 <div id="spammerfeatures">
     <h3>embedded spammer features</h3>
@@ -70,13 +73,6 @@ python app.py
         <li>custom cipher key</li>
     </ul>
 </div>
-<div id="srm">
-    <h3>random message features</h3>
-    <ul>
-        <li>embedded random message function</li>
-        <li>custom messages delay</li>
-    </ul>
-</div>
 <div id="cdbf">
     <h3>Contacts.db crud</h3>
     <ul>
@@ -84,5 +80,31 @@ python app.py
         <li><i>R</i>ead contacts</li>
         <li><i>U</i>pdate contacts</li>
         <li><i>D</i>elete contacts</li>
+    </ul>
+</div>
+<div id="sr">
+    <h3>speech recognition features</h3>
+    <ul>
+        <li>transform voice in text</li>
+        <li>save the text in a .txt file</li>
+        <li>auto save</li>
+        <li>english support</li>
+    </ul>
+</div>
+<div id="tts">
+    <h3>tts features</h3>
+    <ul>
+        <li>transform your text in voice</li>
+        <li>save the voice in a .mp3 file</li>
+        <li>auto save</li>
+        <li>various voices</li>
+        <li>various languages support</li>
+    </ul>
+</div>
+<div id="otm">
+    <h3>send images features</h3>
+    <ul>
+        <li>send images</li>
+        <li>custom delay</li>
     </ul>
 </div>

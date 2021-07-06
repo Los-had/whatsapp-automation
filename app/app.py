@@ -185,9 +185,16 @@ def send_msg_for_many_contacts():
         print(f'{s}: {contact_list}')
     for w in range(contact_reapeter):
         send_msg(contact_list[w], content_of_msg, msg_hour1, msg_min1, delay1)
-def 
+def send_img():
+    msg_contact = input("Number of the contact\n >  ")
+    #msg_hour_send = int(input("Hour the message will be sent\n >  "))
+    #msg_min_send = int(input("Minute the message will be sent\n >  "))
+    img_title = input("Image title\n >  ")
+    img_path = input("Image path\n >  ")
+    send_delay = int(input("Delay\n >  "))
+    pwk.sendwhats_image(msg_contact, img_path, img_title, send_delay)
 #inputs and verifications
-escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n >  ")
+escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n14. Send image\n >  ")
 
 if escolha_inicial == "5":
     print('Bye Bye :D')
@@ -232,6 +239,8 @@ elif escolha_inicial == "12":
     send_msg_for_many_contacts()
 elif escolha_inicial == "13":
     speech_recognition()
+elif escolha_inicial == "14":
+    send_img()
 else:
     print(f'{escolha_inicial} is invalid')
 print("End of the script")

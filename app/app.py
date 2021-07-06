@@ -36,7 +36,7 @@ def speech_recognition():
             audio = lis.listen(mic)
             sr_text = lis.recognize_google(audio, language="en")
             with open('text.txt', 'a') as file:
-                file.write(sr_text)
+                file.write(f'{sr_text}\n')
             print("Saved")
 def counter():
     time_to_sleep = int(input("Time to sleep\n >  "))

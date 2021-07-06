@@ -291,3 +291,4 @@ else:
     print(f'{escolha_inicial} is invalid')
 print("End of the script")
 sys.exit()
+#Beta version, feel free to contribute

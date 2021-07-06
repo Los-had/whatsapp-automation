@@ -9,7 +9,11 @@ import webbrowser
 import sqlite3
 from sqlite3 import Error
 import speech_recognition as sr
+import getpass
 #import hashlib
+
+un = getpass.getuser()
+print(f'Welcome {un}!')
 
 #base variables
 lis = sr.Recognizer()

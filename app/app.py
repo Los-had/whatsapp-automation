@@ -44,15 +44,17 @@ def speech_recognition():
                     file.write(f'{sr_text}\n')
                 print("Saved")
     elif language_choice == "pt":
-            with sr.Microphone() as mic:
-                print("Começe a falar...\n")
-                while True:
-                    print("Pressione ctrl + c para encerrar.")
-                    audio = lis.listen(mic)
-                    sr_text = lis.recognize_google(audio, language="pt")
-                    with open('text.txt', 'a') as file:
-                        file.write(f'{sr_text}\n')
-                    print("Salvo")
+        with sr.Microphone() as mic:
+            print("Começe a falar...\n")
+            while True:
+                print("Pressione ctrl + c para encerrar.")
+                audio = lis.listen(mic)
+                sr_text = lis.recognize_google(audio, language="pt")
+                with open('text.txt', 'a') as file:
+                    file.write(f'{sr_text}\n')
+                print("Salvo")
+    else:
+        print(f'{language_choice}: is invalid')
 def counter():
     time_to_sleep = int(input("Time to sleep\n >  "))
     r = 1

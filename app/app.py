@@ -32,6 +32,7 @@ def speech_recognition():
     with sr.Microphone() as mic:
         print("Start to speak...\n")
         while True:
+            print("Press ctrl + c to stop.")
             audio = lis.listen(mic)
             sr_text = lis.recognize_google(audio, language="en")
             with open('text.txt', 'a') as file:

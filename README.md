@@ -18,11 +18,20 @@ I created this project to improve myself and study a little more in the subjects
 # using
 ***WARNING: this program needs sqlite3 db installed to work properly.***
 
-download the dependencies running the ``denpendencies.cmd`` or ``dependencies.sh`` when the installing processes finish 
+***WARNING: this program needs internet connection to work properly.***
+
+download the dependencies running this commands on your terminal 
+```
+cd ./whatsapp-automation
+cd ./app
+cd ./dependencies
+pip install -r requirements.txt
+``` 
+or the executing the file ``denpendencies.cmd`` or ``dependencies.sh`` when the installing processes finish 
 download the project in the github after that open your terminal and write 
 ```
-cd whatsapp-automation
-cd app
+cd ./whatsapp-automation
+cd ./app
 python app.py
 ```
 

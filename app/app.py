@@ -8,9 +8,11 @@ import pyttsx3
 import webbrowser
 import sqlite3
 from sqlite3 import Error
+import speech_recognition as sr
 #import hashlib
 
 #base variables
+lis = sr.Recognizer()
 tts = pyttsx3.init()
 conn = sqlite3.connect("contacts.db")
 cursor = conn.cursor()
@@ -26,6 +28,14 @@ CREATE TABLE IF NOT EXISTS contacts (
 def speak(text):
     tts.say(text)
     tts.runAndWait()
+def speech_recognition():
+    with sr.Microphone() as mic:
+        while True:
+            audio = lis.listen(mic)
+            sr_text = lis.recognize_google(audio, language="en")
+            with open('text.txt', 'a') as file:
+                file.write(sr_text)
+            print("Saved")
 def counter():
     time_to_sleep = int(input("Time to sleep\n >  "))
     r = 1
@@ -174,7 +184,7 @@ def send_msg_for_many_contacts():
             print(f'{s}: {contact_list}')
             send_msg(contact_list[s], content_of_msg, msg_hour1, msg_min1, delay1)
 #inputs and verifications
-escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n >  ")
+escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n >  ")
 
 if escolha_inicial == "5":
     print('Bye Bye :D')
@@ -217,6 +227,8 @@ elif escolha_inicial == "11":
     save_tts_audio()
 elif escolha_inicial == "12":
     send_msg_for_many_contacts()
+elif escolha_inicial == "13":
+    speech_recognition()
 else:
     print(f'{escolha_inicial} is invalid')
 print("End of the script")

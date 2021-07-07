@@ -208,6 +208,13 @@ def spammer(text, reapeter, delay):
     pyautogui.hotkey("ctrl", "w")
     speak('Finished')
     print('Finish')
+def send_msg_for_group():
+    group_id = input("Group id\n >  ")
+    group_msg = input("Message\n >  ")
+    gh = int(input("Hour the message will be sent\n >  "))
+    gm = int(input("Minute the message will be sent\n >  "))
+    gd = int(input("Delay\n > "))
+    pwk.sendwhatmsg_to_group(group_id, group_msg, gh, gm, gd)
 def send_random_msg():
     def random_msg():
         msgs = ['Hi', 'Hello', 'Funny', 'Thanks', 'I love you', 'Wtf', 'Jesus christ', 'Fuck', 'Smurfs', 'Potato', 'Tomato', 'Juice', 'Orange', 'Apple', 'Microsoft', 'Linux', 'Is better', 'Shit', '...', ';-;', ':D', ':p', ':3', '<3', "'-'", '=)', '=(']
@@ -240,7 +247,7 @@ def send_img():
     send_delay = int(input("Delay\n >  "))
     pwk.sendwhats_image(msg_contact, img_path, img_title, send_delay)
 #inputs and verifications
-escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n14. Send image\n >  ")
+escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n14. Send image\n15. Send messages for group\n >  ")
 
 if escolha_inicial == "5":
     print('Bye Bye :D')
@@ -287,6 +294,8 @@ elif escolha_inicial == "13":
     speech_recognition()
 elif escolha_inicial == "14":
     send_img()
+elif escolha_inicial == "15":
+    send_msg_for_group()
 else:
     print(f'{escolha_inicial} is invalid')
 print("End of the script")

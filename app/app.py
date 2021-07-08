@@ -40,29 +40,34 @@ def speak(text):
     tts.say(text)
     tts.runAndWait()
 def speech_recognition():
-    language_choice = input("What language you want?(pt/en)\n >  ")
-    if language_choice == "en":
-        with sr.Microphone() as mic:
-            print("Start to speak...\n")
-            while True:
-                print("Press ctrl + c to stop.")
-                audio = lis.listen(mic)
-                sr_text = lis.recognize_google(audio, language="en")
-                with open('text.txt', 'a') as file:
-                    file.write(f'{sr_text}\n')
-                print("Saved")
-    elif language_choice == "pt":
-        with sr.Microphone() as mic:
-            print("Começe a falar...\n")
-            while True:
-                print("Pressione ctrl + c para encerrar.")
-                audio = lis.listen(mic)
-                sr_text = lis.recognize_google(audio, language="pt")
-                with open('text.txt', 'a') as file:
-                    file.write(f'{sr_text}\n')
-                print("Salvo")
-    else:
-        print(f'{language_choice}: is invalid')
+    try:
+        language_choice = input("What language you want?(pt/en)\n >  ")
+        if language_choice == "en":
+            with sr.Microphone() as mic:
+                print("Start to speak...\n")
+                while True:
+                    print("Press ctrl + c to stop.")
+                    audio = lis.listen(mic)
+                    sr_text = lis.recognize_google(audio, language="en")
+                    with open('text.txt', 'a') as file:
+                        file.write(f'{sr_text}\n')
+                    print("Saved")
+        elif language_choice == "pt":
+            with sr.Microphone() as mic:
+                print("Começe a falar...\n")
+                while True:
+                    print("Pressione ctrl + c para encerrar.")
+                    audio = lis.listen(mic)
+                    sr_text = lis.recognize_google(audio, language="pt")
+                    with open('text.txt', 'a') as file:
+                        file.write(f'{sr_text}\n')
+                    print("Salvo")
+        else:
+            print(f'{language_choice}: is invalid')
+    except ValueError:
+        print("Unknown value. Try again :D")
+    except KeyboardInterrupt:
+        menu()
 def counter():
     time_to_sleep = int(input("Time to sleep\n >  "))
     r = 1
@@ -251,57 +256,68 @@ def send_img():
     send_delay = int(input("Delay\n >  "))
     pwk.sendwhats_image(msg_contact, img_path, img_title, send_delay)
 #inputs and verifications
-escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n14. Send image\n15. Send messages for group\n >  ")
+def menu():
+    try:
+        escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n14. Send image\n15. Send messages for group\n >  ")
 
-if escolha_inicial == "5":
-    print('Bye Bye :D')
-    sleep(5)
-    sys.exit()
-elif escolha_inicial == "4":
-    cipher_text = input("Your message here\n >  ")
-    encrypt(cipher_text)
-#elif escolha_inicial == "1":    
-#    send_msg()
-elif escolha_inicial == "3":
-    spam_delay = int(input("Messages delay\n >  "))
-    spam_content = input("Message do you want to spam\n >  ")
-    spam_reapeter = int(input("How many times do you want to sent\n >  "))
-    spammer(spam_content, spam_reapeter, spam_delay)
-elif escolha_inicial == "1":
-    user_phone_number = input("User phone number\n >  ") 
-    msg_content = input("Your message here\n >  ")
-    msg_hour = int(input("Hour the message will be sent\n >  "))
-    msg_min = int(input("Minute the message will be sent\n >  "))
-    msg_delay = int(input("Message sent delay\n >  "))
-    send_msg(user_phone_number, msg_content, msg_hour, msg_min, msg_delay)
-elif escolha_inicial == "2":
-    send_random_msg()
-elif escolha_inicial == "6":
-    contact_name = input("Contact name\n >  ")
-    contact_phone_number = input("Contact phone number\n >  ")
-    contact_description = input("Contact short description\n > ")
-    add_contact_to_db(contact_name, contact_phone_number, contact_description)
-elif escolha_inicial == "7":
-    view_contact()
-elif escolha_inicial == "8":
-    counter()
-elif escolha_inicial == "9":
-    remove_contact_to_db()
-    print("Contact deleted")
-elif escolha_inicial == "10":
-    update_contact_data()
-elif escolha_inicial == "11":
-    save_tts_audio()
-elif escolha_inicial == "12":
-    send_msg_for_many_contacts()
-elif escolha_inicial == "13":
-    speech_recognition()
-elif escolha_inicial == "14":
-    send_img()
-elif escolha_inicial == "15":
-    send_msg_for_group()
-else:
-    print(f'{escolha_inicial} is invalid')
-print(Fore.GREEN + "End" + Fore.BLUE +  "of " + Fore.YELLOW + "the" + Fore.RED + " script")
-sys.exit()
+        if escolha_inicial == "5":
+            print('Bye Bye :D')
+            sleep(5)
+            sys.exit()
+        elif escolha_inicial == "4":
+            cipher_text = input("Your message here\n >  ")
+            encrypt(cipher_text)
+        #elif escolha_inicial == "1":    
+        #    send_msg()
+        elif escolha_inicial == "3":
+            spam_delay = int(input("Messages delay\n >  "))
+            spam_content = input("Message do you want to spam\n >  ")
+            spam_reapeter = int(input("How many times do you want to sent\n >  "))
+            spammer(spam_content, spam_reapeter, spam_delay)
+        elif escolha_inicial == "1":
+            user_phone_number = input("User phone number\n >  ") 
+            msg_content = input("Your message here\n >  ")
+            msg_hour = int(input("Hour the message will be sent\n >  "))
+            msg_min = int(input("Minute the message will be sent\n >  "))
+            msg_delay = int(input("Message sent delay\n >  "))
+            send_msg(user_phone_number, msg_content, msg_hour, msg_min, msg_delay)
+        elif escolha_inicial == "2":
+            send_random_msg()
+        elif escolha_inicial == "6":
+            contact_name = input("Contact name\n >  ")
+            contact_phone_number = input("Contact phone number\n >  ")
+            contact_description = input("Contact short description\n > ")
+            add_contact_to_db(contact_name, contact_phone_number, contact_description)
+        elif escolha_inicial == "7":
+            view_contact()
+        elif escolha_inicial == "8":
+            counter()
+        elif escolha_inicial == "9":
+            remove_contact_to_db()
+            print("Contact deleted")
+        elif escolha_inicial == "10":
+            update_contact_data()
+        elif escolha_inicial == "11":
+            save_tts_audio()
+        elif escolha_inicial == "12":
+            send_msg_for_many_contacts()
+        elif escolha_inicial == "13":
+            speech_recognition()
+        elif escolha_inicial == "14":
+            send_img()
+        elif escolha_inicial == "15":
+            send_msg_for_group()
+        else:
+            print(f'{escolha_inicial} is invalid')
+    except ValueError:
+        print("Unknown value. Try again :)")
+        menu()
+    except KeyboardInterrupt:
+        print("Bye Bye :D")
+        sleep(10)
+        sys.exit()
+    finally:
+        print(Fore.GREEN + "End" + Fore.BLUE +  " of" + Fore.YELLOW + " the" + Fore.RED + " script")
+        sys.exit()
+menu()
 #Beta version, feel free to contribute

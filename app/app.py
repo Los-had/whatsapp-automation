@@ -18,6 +18,7 @@ import speech_recognition as sr
 import getpass
 import colorama
 from colorama import Fore, Back, Style
+import wikipedia as wikis
 #import hashlib
 
 colorama.init(autoreset=True)
@@ -42,6 +43,24 @@ try:
 except Error:
     print(f'An error occurred, error code: {Error.code}')
 #functions
+def wiki_verify(info):
+    try:
+        to_search = wikis.search(str(info))
+        for i in to_search:
+            print(wikis.summary(i, sentences=1))
+    except ValueError:
+        print("Unknown value. Try again :D")
+    except KeyboardInterrupt:
+        menu()
+'''
+def IsAlink(info):
+    link1 = 'https://'
+    link2 = 'http://'
+    if (link1 not in info) or (link2 not in info):
+        pass
+    else:
+        wiki_verify(info)
+'''
 def speak(text):
     tts.say(text)
     tts.runAndWait()
@@ -204,7 +223,21 @@ def encrypt(msg):
     send_msg(user_phone_number, resultado, msg_hour, msg_min, msg_delay)   
 def send_msg(phone_n, content, h, m, wt):
     sleep(0.25)
-    pwk.sendwhatmsg(phone_n, content, h, m, wt)
+    search_choice = input("Dou you want to search about this topic before send the message? Can be a fake news.(y/n)\n >  ")
+    if search_choice == "y":
+        wiki_verify(content)
+        ask_send = input("Do you want to send the message(y/n)\n >  ")
+        if ask_send == "y":
+            pwk.sendwhatmsg(phone_n, content, h, m, wt)
+        elif ask_send == "n":
+            menu()
+        else:
+            print(f'{ask_send}: is invalid')
+    elif search_choice == "n":
+        pwk.sendwhatmsg(phone_n, content, h, m, wt)
+    else:
+        print(f'{search_choice}: is invalid')
+        pwk.sendwhatmsg(phone_n, content, h, m, wt)
 def spammer(text, reapeter, delay):
     i = 0
     j = 30

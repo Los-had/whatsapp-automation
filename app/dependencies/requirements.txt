@@ -2,3 +2,4 @@ pywhatkit==5.0
 pyautogui==0.9.52
 pyttsx3==2.90
 SpeechRecognition==3.8.1
+colorama==0.4.4

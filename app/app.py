@@ -47,7 +47,7 @@ def wiki_verify(info):
     try:
         to_search = wikis.search(str(info))
         for i in to_search:
-            print(wikis.summary(i, sentences=1))
+            print(f'[*]: {wikis.summary(i, sentences=1)}\n')
     except ValueError:
         print("Unknown value. Try again :D")
     except KeyboardInterrupt:

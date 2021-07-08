@@ -313,9 +313,15 @@ def menu():
         print("Unknown value. Try again :)")
         menu()
     except KeyboardInterrupt:
-        print("Bye Bye :D")
-        sleep(10)
-        sys.exit()
+        exit_choice = input("Dou you want to exit?(y/n)\n >  ") 
+        if exit_choice == "y":  
+            print("Bye Bye :D")
+            sleep(10)
+            sys.exit()
+        elif exit_choice == "n":
+            menu()
+        else:
+            print(f'{exit_choice}: is invalid')
     finally:
         print(Fore.GREEN + "End" + Fore.BLUE +  " of" + Fore.YELLOW + " the" + Fore.RED + " script")
         sys.exit()

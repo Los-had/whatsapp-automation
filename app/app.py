@@ -1,3 +1,9 @@
+'''
+authors: Los-had, lind0-oss
+repository: https://github.com/Los-had/whatsapp-automation
+license: MIT
+'''
+
 from sqlite3.dbapi2 import connect
 import pywhatkit as pwk
 from time import sleep

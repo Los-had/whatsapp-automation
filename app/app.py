@@ -10,10 +10,14 @@ import sqlite3
 from sqlite3 import Error
 import speech_recognition as sr
 import getpass
+import colorama
+from colorama import Fore, Back, Style
 #import hashlib
 
+colorama.init(autoreset=True)
+
 un = getpass.getuser()
-print(f'Welcome {un}!')
+print(f'Welcome ' + Fore.RED + f'{un}!')
 
 #base variables
 lis = sr.Recognizer()
@@ -298,6 +302,6 @@ elif escolha_inicial == "15":
     send_msg_for_group()
 else:
     print(f'{escolha_inicial} is invalid')
-print("End of the script")
+print(Fore.GREEN + "End" + Fore.BLUE +  "of " + Fore.YELLOW + "the" + Fore.RED + " script")
 sys.exit()
 #Beta version, feel free to contribute

@@ -19,6 +19,7 @@ import getpass
 import colorama
 from colorama import Fore, Back, Style
 import wikipedia as wikis
+from googlesearch import search
 #import hashlib
 
 colorama.init(autoreset=True)
@@ -43,6 +44,10 @@ try:
 except Error:
     print(f'An error occurred, error code: {Error.code}')
 #functions
+def search_on_google():
+    stext = input('What do you want to search?\n >  ')
+    for result in search(f'"{stext}" google', stop=10):
+        print(Fore.CYAN + 'Result: ' + Fore.RESET + f'[{result}]')
 def wiki_verify(info):
     try:
         to_search = wikis.search(str(info))
@@ -297,7 +302,7 @@ def send_img():
 #inputs and verifications
 def menu():
     try:
-        escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n14. Send image\n15. Send messages for group\n >  ")
+        escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n14. Send image\n15. Send messages for group" + Fore.GREEN + "\n\n-----------------------------------------------\nSearch functions\n\n" + Fore.RESET + "16. Search related links on google\n" + Fore.GREEN + "-----------------------------------------------" + Fore.RESET + "\n >  ")
 
         if escolha_inicial == "5":
             print('Bye Bye :D')
@@ -346,6 +351,8 @@ def menu():
             send_img()
         elif escolha_inicial == "15":
             send_msg_for_group()
+        elif escolha_inicial == "16":
+            search_on_google()
         else:
             print(f'{escolha_inicial} is invalid')
     except ValueError:

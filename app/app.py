@@ -47,7 +47,7 @@ except Error:
 def search_on_google():
     stext = input('What do you want to search?\n >  ')
     for result in search(f'"{stext}" google', stop=10):
-        print(Fore.CYAN + 'Result: ' + Fore.RESET + f'[{result}]')
+        print(Fore.CYAN + 'Result: ' + Fore.RED + '[' + Fore.GREEN + f'{result}' + Fore.RED +']')
 def wiki_verify(info):
     try:
         to_search = wikis.search(str(info))

@@ -48,6 +48,9 @@ def search_on_google():
     stext = input('What do you want to search?\n >  ')
     for result in search(f'"{stext}" google', stop=10):
         print(Fore.CYAN + 'Result: ' + Fore.RED + '[' + Fore.GREEN + f'{result}' + Fore.RED +']')
+def play_on_youtube():
+    search_video = input("What video you want to play on youtube?\n >  ")
+    pwk.playonyt(search_video)
 def wiki_verify(info):
     try:
         to_search = wikis.search(str(info))
@@ -302,7 +305,7 @@ def send_img():
 #inputs and verifications
 def menu():
     try:
-        escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n14. Send image\n15. Send messages for group" + Fore.GREEN + "\n\n-----------------------------------------------\nSearch functions\n\n" + Fore.RESET + "16. Search related links on google\n" + Fore.GREEN + "-----------------------------------------------" + Fore.RESET + "\n >  ")
+        escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n14. Send image\n15. Send messages for group" + Fore.GREEN + "\n-----------------------------------------------\nSearch functions\n" + Fore.RESET + "16. Search related links on google\n" + Fore.GREEN + "-----------------------------------------------" + Fore.RESET + "\n17. Play video on YouTube" + "\n >  ")
 
         if escolha_inicial == "5":
             print('Bye Bye :D')
@@ -353,6 +356,8 @@ def menu():
             send_msg_for_group()
         elif escolha_inicial == "16":
             search_on_google()
+        elif escolha_inicial == "17":
+            play_on_youtube()
         else:
             print(f'{escolha_inicial} is invalid')
     except ValueError:

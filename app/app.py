@@ -21,6 +21,7 @@ from colorama import Fore, Back, Style
 import wikipedia as wikis
 from googlesearch import search
 import requests
+import json
 #import hashlib
 
 colorama.init(autoreset=True)
@@ -45,6 +46,14 @@ try:
 except Error:
     print(f'An error occurred, error code: {Error.code}')
 #functions
+def quotation():
+    url = requests.get('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL')
+    url = url.json()
+    dollar = url['USDBRL']['bid']
+    eur = url['EURBRL']['bid']
+    btc = url['BTCBRL']['bid']
+    print(f'USD: {dollar}\nEUR: {eur}\nBTC: {btc}')
+    print('This values will be updated on 30s.')
 def search_on_google2():
     try:
         search_topic = input("What you want to search?\n >  ")
@@ -322,7 +331,7 @@ def send_img():
 #inputs and verifications
 def menu():
     try:
-        escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n14. Send image\n15. Send messages for group" + Fore.GREEN + "\n-----------------------------------------------\nSearch functions\n" + Fore.RESET + "16. Search related links on google\n17. Search on google\n18. Search topic on google\n" + Fore.GREEN + "-----------------------------------------------" + Fore.RESET + "\n19. Play video on YouTube" + "\n >  ")
+        escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n14. Send image\n15. Send messages for group" + Fore.GREEN + "\n-----------------------------------------------\nSearch functions\n" + Fore.RESET + "16. Search related links on google\n17. Search on google\n18. Search topic on google\n" + Fore.GREEN + "-----------------------------------------------" + Fore.RESET + "\n19. Play video on YouTube\n20. See USD, EUR and BTC quotation" + "\n >  ")
 
         if escolha_inicial == "5":
             print('Bye Bye :D')
@@ -379,6 +388,8 @@ def menu():
             search_on_google()
         elif escolha_inicial == "18":
             search_on_google2()
+        elif escolha_inicial == "20":
+            quotation()
         else:
             print(f'{escolha_inicial} is invalid')
     except ValueError:

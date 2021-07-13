@@ -64,6 +64,9 @@ def quotation():
         menu()
     except KeyboardInterrupt:
         menu()
+    except:
+        print('An unknown error occurred, try again.')
+        menu()
 def search_on_google2():
     try:
         search_topic = input("What you want to search?\n >  ")

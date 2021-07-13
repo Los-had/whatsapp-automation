@@ -20,6 +20,7 @@ import colorama
 from colorama import Fore, Back, Style
 import wikipedia as wikis
 from googlesearch import search
+import requests
 #import hashlib
 
 colorama.init(autoreset=True)
@@ -44,10 +45,26 @@ try:
 except Error:
     print(f'An error occurred, error code: {Error.code}')
 #functions
+def search_on_google2():
+    try:
+        search_topic = input("What you want to search?\n >  ")
+        url = f'https://www.google.com/search?q={search_topic}'
+        webbrowser.open_new_tab(url)
+    except KeyboardInterrupt:
+        menu()
 def search_on_google():
-    stext = input('What do you want to search?\n >  ')
-    for result in search(f'"{stext}" google', stop=10):
-        print(Fore.CYAN + 'Result: ' + Fore.RED + '[' + Fore.GREEN + f'{result}' + Fore.RED +']')
+    try:
+        search_text = input("What do you want to search?\n >  ")
+        pwk.search(search_text)
+    except KeyboardInterrupt:
+        menu()
+def search_related_links_on_google():
+    try:
+        stext = input('What do you want to search?\n >  ')
+        for result in search(f'"{stext}" google', stop=10):
+            print(Fore.CYAN + 'Result: ' + Fore.RED + '[' + Fore.GREEN + f'{result}' + Fore.RED +']')
+    except KeyboardInterrupt:
+        menu()
 def play_on_youtube():
     search_video = input("What video you want to play on youtube?\n >  ")
     pwk.playonyt(search_video)
@@ -64,8 +81,8 @@ def wiki_verify(info):
 def IsAlink(info):
     link1 = 'https://'
     link2 = 'http://'
-    if (link1 not in info) or (link2 not in info):
-        pass
+    if link1 and link2 not in info:
+        print(f'{info}: is not a link!')
     else:
         wiki_verify(info)
 '''
@@ -305,7 +322,7 @@ def send_img():
 #inputs and verifications
 def menu():
     try:
-        escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n14. Send image\n15. Send messages for group" + Fore.GREEN + "\n-----------------------------------------------\nSearch functions\n" + Fore.RESET + "16. Search related links on google\n" + Fore.GREEN + "-----------------------------------------------" + Fore.RESET + "\n17. Play video on YouTube" + "\n >  ")
+        escolha_inicial = input("What do you want to do? \n1. Send message \n2. Send random message\n3. Spam\n4. Send encrypted message\n5. Exit\n6. Create contact\n7. View contacts\n8. Counter\n9. Delete contact\n10. Update contact info\n11. Create audio\n12. Send messages for many contacts\n13. Speech recognition\n14. Send image\n15. Send messages for group" + Fore.GREEN + "\n-----------------------------------------------\nSearch functions\n" + Fore.RESET + "16. Search related links on google\n17. Search on google\n18. Search topic on google\n" + Fore.GREEN + "-----------------------------------------------" + Fore.RESET + "\n19. Play video on YouTube" + "\n >  ")
 
         if escolha_inicial == "5":
             print('Bye Bye :D')
@@ -355,9 +372,13 @@ def menu():
         elif escolha_inicial == "15":
             send_msg_for_group()
         elif escolha_inicial == "16":
-            search_on_google()
-        elif escolha_inicial == "17":
+            search_related_links_on_google()
+        elif escolha_inicial == "19":
             play_on_youtube()
+        elif escolha_inicial == "17":
+            search_on_google()
+        elif escolha_inicial == "18":
+            search_on_google2()
         else:
             print(f'{escolha_inicial} is invalid')
     except ValueError:
@@ -375,6 +396,7 @@ def menu():
             print(f'{exit_choice}: is invalid')
     finally:
         print(Fore.GREEN + "End" + Fore.BLUE +  " of" + Fore.YELLOW + " the" + Fore.RED + " script")
+        sleep(5.5)
         sys.exit()
 menu()
 #Beta version, feel free to contribute

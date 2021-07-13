@@ -62,6 +62,8 @@ def quotation():
     except ConnectionError:
         print('A connection error occurred, try again.')
         menu()
+    except KeyboardInterrupt:
+        menu()
 def search_on_google2():
     try:
         search_topic = input("What you want to search?\n >  ")

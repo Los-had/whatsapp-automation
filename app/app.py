@@ -22,6 +22,7 @@ import wikipedia as wikis
 from googlesearch import search
 import requests
 import json
+from requests import HTTPError, ConnectionError
 #import hashlib
 
 colorama.init(autoreset=True)
@@ -47,13 +48,20 @@ except Error:
     print(f'An error occurred, error code: {Error.code}')
 #functions
 def quotation():
-    url = requests.get('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL')
-    url = url.json()
-    dollar = url['USDBRL']['bid']
-    eur = url['EURBRL']['bid']
-    btc = url['BTCBRL']['bid']
-    print(f'USD: {dollar}\nEUR: {eur}\nBTC: {btc}')
-    print('This values will be updated on 30s.')
+    try:
+        url = requests.get('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL')
+        url = url.json()
+        dollar = url['USDBRL']['bid']
+        eur = url['EURBRL']['bid']
+        btc = url['BTCBRL']['bid']
+        print(f'USD: {dollar}\nEUR: {eur}\nBTC: {btc}')
+        print('This values will be updated on 30s.')
+    except HTTPError:
+        print("An unknown error occurred, try again.")
+        menu()
+    except ConnectionError:
+        print('A connection error occurred, try again.')
+        menu()
 def search_on_google2():
     try:
         search_topic = input("What you want to search?\n >  ")

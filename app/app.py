@@ -103,10 +103,12 @@ def wiki_verify(info):
 def IsAlink(info):
     link1 = 'https://'
     link2 = 'http://'
-    if link1 and link2 not in info:
+    if link2 not in info:
+        print(f'{info}: is not a link!')
+    elif link1  not in info:
         print(f'{info}: is not a link!')
     else:
-        wiki_verify(info)
+        print(f'{info}: is invalid')
 '''
 def speak(text):
     tts.say(text)
